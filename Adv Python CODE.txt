@@ -1,0 +1,48 @@
+class Test:
+    company = "Walwill"
+    def __init__(self,prdid,prdprice,qnty):
+        self.id= prdid
+        self.price = prdprice
+        self.qnty= qnty
+
+    def total_cost_cal(self):
+        print("company name:",Test.company)
+        totalcost = self.qnty*self.price
+        print("total price:",totalcost)
+        result = self.order_size_cal(totalcost)
+        print("Order size:",result)
+
+    @staticmethod
+    def order_size_cal(total):
+        if total >50000 and total<100000:
+            return "Small lot"
+        elif total>100000 and total < 200000:
+            return "Medium lot"
+        else:
+            return "Large lot"
+    @classmethod
+    def CompanyNameChange(cls):
+        cls.company = "FedEx"
+
+obj  = Test(101,15000,50)
+obj.total_cost_cal()
+Test.CompanyNameChange()
+obj.total_cost_cal()
+
+
+#inner class
+
+class University:
+    def __init__(self):
+        print("Unitversity init method")
+    class College:
+        def __init__(self):
+            print("college init method")
+
+        def m1(self):
+            print("in m1 method")
+
+obj  = University().College()
+
+obj.m1()
+
